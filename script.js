@@ -4,20 +4,20 @@ let colorSelected;
 
 //Add a row
 function addR() {
-    alert("Clicked Add Row")
+    console.log("Clicked Add Row")
 }
 //Add a column
 function addC() {
-    alert("Clicked Add Col")
+    console.log("Clicked Add Col")
 }
 
 //Remove a row
 function removeR() {
-    alert("Clicked Remove Row")
+    console.log("Clicked Remove Row")
 }
 //Remove a column
 function removeC() {
-    alert("Clicked Remove Col")
+    console.log("Clicked Remove Col")
 }
 //sets global var for selected color
 function selected(){
@@ -26,13 +26,13 @@ function selected(){
 }
 
 function fill(){
-    alert("Clicked Fill All")
+    console.log("Clicked Fill All")
 }
 
 function clearAll(){
-    alert("Clicked Clear All")
+    console.log("Clicked Clear All")
 }
 
 function fillU(){
-    alert("Clicked Fill All Uncolored")
+    console.log("Clicked Fill Uncolored")
 }
