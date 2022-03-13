@@ -5,14 +5,9 @@ let colorSelected;
 //Add a row
 function addR() {
     let grid = document.getElementById("grid");
-    let rows = document.getElementsByTagName("tr");
-    console.log(rows.length);
     if (numRows === 0){
         let row = document.createElement("tr");
         let col = document.createElement("td");
-        col.onclick = function(){
-            this.style.backgroundColor = colorSelected;
-        };
         row.appendChild(col);
         grid.appendChild(row);
         numRows++;
@@ -24,22 +19,20 @@ function addR() {
         }
         grid.appendChild(row);
     }
-    
 //    console.log("Clicked Add Row");
 }
 //Add a column
 function addC() {
-    let grid = document.getElementById("grid");
-    let rows = document.getElementsByTagName("tr");
     if (numCols === 0) {
         addR();
     }else{
+        let rows = document.getElementsByTagName("tr");
         numCols++;
         for (let row of rows){
             row.appendChild(document.createElement("td"));
         }
     }
-    console.log("Clicked Add Col");
+//    console.log("Clicked Add Col");
 }
 
 //Remove a row
