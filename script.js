@@ -18,6 +18,7 @@ function addR() {
             row.appendChild(document.createElement("td"));
         }
         grid.appendChild(row);
+        numRows++;
     }
 //    console.log("Clicked Add Row");
 }
@@ -37,10 +38,17 @@ function addC() {
 
 //Remove a row
 function removeR() {
-    let grid = document.getElementById("grid");
-    grid.removeChild(grid.lastChild);
-    numRows--;
-    console.log("Clicked Remove Row");
+    if (numRows !== 0){
+        let grid = document.getElementById("grid");
+        grid.removeChild(grid.lastChild);
+        numRows--;
+        console.log(numRows + " rows");
+        if (numRows === 0){
+            console.log("0 rows");
+            numCols = 0; //does not work, breaks
+        }
+        console.log("Clicked Remove Row");
+    }
 }
 //Remove a column
 function removeC() {
