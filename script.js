@@ -44,8 +44,7 @@ function removeR() {
         numRows--;
         console.log(numRows + " rows");
         if (numRows === 0){
-            console.log("0 rows");
-            numCols = 0; //does not work, breaks
+            numCols = 0;
         }
 //        console.log("Clicked Remove Row");
     }
