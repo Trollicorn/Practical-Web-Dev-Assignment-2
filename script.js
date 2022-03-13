@@ -47,12 +47,24 @@ function removeR() {
             console.log("0 rows");
             numCols = 0; //does not work, breaks
         }
-        console.log("Clicked Remove Row");
+//        console.log("Clicked Remove Row");
     }
 }
 //Remove a column
 function removeC() {
-    console.log("Clicked Remove Col");
+    if (numCols !== 0){
+        let rows = document.getElementsByTagName("tr");
+        for (let row of rows){
+            row.removeChild(row.lastChild);
+        }
+        numCols--;
+        if (numCols === 0){
+            let grid = document.getElementById("grid");
+                grid.innerHTML = "";
+            numRows = 0;
+        }
+    }
+//    console.log("Clicked Remove Col");
 }
 //sets global var for selected color
 function selected(){
