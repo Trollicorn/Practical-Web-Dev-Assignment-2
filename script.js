@@ -17,21 +17,28 @@ function addR() {
         grid.appendChild(row);
         numRows++;
         numCols++;
-    }
-    else{
+    }else{
         let row = document.createElement("tr");
         for (let i = 0; i < numCols; ++i){
             row.appendChild(document.createElement("td"));
         }
         grid.appendChild(row);
     }
-
-
     
-    console.log("Clicked Add Row");
+//    console.log("Clicked Add Row");
 }
 //Add a column
 function addC() {
+    let grid = document.getElementById("grid");
+    let rows = document.getElementsByTagName("tr");
+    if (numCols === 0) {
+        addR();
+    }else{
+        numCols++;
+        for (let row of rows){
+            row.appendChild(document.createElement("td"));
+        }
+    }
     console.log("Clicked Add Col");
 }
 
