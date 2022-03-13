@@ -18,6 +18,7 @@ function addR() {
             row.appendChild(document.createElement("td"));
         }
         grid.appendChild(row);
+        numRows++;
     }
 //    console.log("Clicked Add Row");
 }
@@ -37,11 +38,32 @@ function addC() {
 
 //Remove a row
 function removeR() {
-    console.log("Clicked Remove Row");
+    if (numRows !== 0){
+        let grid = document.getElementById("grid");
+        grid.removeChild(grid.lastChild);
+        numRows--;
+        console.log(numRows + " rows");
+        if (numRows === 0){
+            numCols = 0;
+        }
+//        console.log("Clicked Remove Row");
+    }
 }
 //Remove a column
 function removeC() {
-    console.log("Clicked Remove Col");
+    if (numCols !== 0){
+        let rows = document.getElementsByTagName("tr");
+        for (let row of rows){
+            row.removeChild(row.lastChild);
+        }
+        numCols--;
+        if (numCols === 0){
+            let grid = document.getElementById("grid");
+                grid.innerHTML = "";
+            numRows = 0;
+        }
+    }
+//    console.log("Clicked Remove Col");
 }
 //sets global var for selected color
 function selected(){
