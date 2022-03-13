@@ -37,6 +37,9 @@ function addC() {
 
 //Remove a row
 function removeR() {
+    let grid = document.getElementById("grid");
+    grid.removeChild(grid.lastChild);
+    numRows--;
     console.log("Clicked Remove Row");
 }
 //Remove a column
