@@ -4,7 +4,9 @@ let numCols = 0;
 //Add a row
 function addR() {
     let grid = document.getElementById("grid");
+    //if no rows/cols
     if (numRows === 0){
+        //make one row with one col
         let row = document.createElement("tr");
         let col = document.createElement("td");
         col.style.backgroundColor = "White";
@@ -15,7 +17,9 @@ function addR() {
         grid.appendChild(row);
         numRows++;
         numCols++;
+    //else
     }else{
+        //make a row with the same number of cols as existing rows
         let row = document.createElement("tr");
         for (let i = 0; i < numCols; ++i){
             col = document.createElement("td");
@@ -32,9 +36,11 @@ function addR() {
 }
 //Add a column
 function addC() {
+    //if no cols (no rows), handle in addR
     if (numCols === 0) {
         addR();
     }else{
+        //else add a col to all rows
         let rows = document.getElementsByTagName("tr");
         numCols++;
         for (let row of rows){
@@ -51,11 +57,13 @@ function addC() {
 
 //Remove a row
 function removeR() {
+    //remove row element and decrement number of rows
     if (numRows !== 0){
         let grid = document.getElementById("grid");
         grid.removeChild(grid.lastChild);
         numRows--;
         if (numRows === 0){
+            //no more rows/cols
             numCols = 0;
         }
 //        console.log("Clicked Remove Row");
@@ -63,6 +71,7 @@ function removeR() {
 }
 //Remove a column
 function removeC() {
+    //remove col element and decrement number of cols
     if (numCols !== 0){
         let rows = document.getElementsByTagName("tr");
         for (let row of rows){
@@ -70,6 +79,7 @@ function removeC() {
         }
         numCols--;
         if (numCols === 0){
+            //no rows/cols left
             let grid = document.getElementById("grid");
                 grid.innerHTML = "";
             numRows = 0;
@@ -77,34 +87,36 @@ function removeC() {
     }
 //    console.log("Clicked Remove Col");
 }
-//sets global var for selected color
 
 function getColor(){
+    //gets color from selector
     return document.getElementById("selectedID").value;
 }
 
 function fill(){
+    //changes background color of all cols
     let cols = document.getElementsByTagName("td");
     for (let col of cols){
         col.style.backgroundColor = getColor();
     }
-    console.log("Clicked Fill All");
+  //  console.log("Clicked Fill All");
 }
 
 function clearAll(){
+    //makes color of every col white
     let cols = document.getElementsByTagName("td");
     for (let col of cols){
         col.style.backgroundColor = "White";
-        console.log(col.style.backgroundColor);
     }
 }
 
 function fillU(){
+    //changes color of every white col
     let cols = document.getElementsByTagName("td");
     for (let col of cols){
         if (col.style.backgroundColor === "white"){
             col.style.backgroundColor = getColor();
         }
     }
-    console.log("Clicked Fill Uncolored");
+//    console.log("Clicked Fill Uncolored");
 }
