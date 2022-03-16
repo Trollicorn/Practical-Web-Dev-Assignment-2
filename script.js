@@ -8,6 +8,9 @@ function addR() {
     if (numRows === 0){
         let row = document.createElement("tr");
         let col = document.createElement("td");
+        col.onclick = function(){
+            this.style.backgroundColor = getColor();
+        }
         row.appendChild(col);
         grid.appendChild(row);
         numRows++;
@@ -15,7 +18,11 @@ function addR() {
     }else{
         let row = document.createElement("tr");
         for (let i = 0; i < numCols; ++i){
-            row.appendChild(document.createElement("td"));
+            col = document.createElement("td");
+            col.onclick = function(){
+                this.style.backgroundColor = getColor();
+            }
+            row.appendChild(col);
         }
         grid.appendChild(row);
         numRows++;
@@ -30,7 +37,11 @@ function addC() {
         let rows = document.getElementsByTagName("tr");
         numCols++;
         for (let row of rows){
-            row.appendChild(document.createElement("td"));
+            col = document.createElement("td");
+            col.onclick = function(){
+                this.style.backgroundColor = getColor();
+            }
+            row.appendChild(col);
         }
     }
 //    console.log("Clicked Add Col");
@@ -42,7 +53,6 @@ function removeR() {
         let grid = document.getElementById("grid");
         grid.removeChild(grid.lastChild);
         numRows--;
-        console.log(numRows + " rows");
         if (numRows === 0){
             numCols = 0;
         }
@@ -69,6 +79,10 @@ function removeC() {
 function selected(){
     colorSelected = document.getElementById("selectedID").value;
     console.log(colorSelected);
+}
+
+function getColor(){
+    return document.getElementById("selectedID").value;
 }
 
 function fill(){
