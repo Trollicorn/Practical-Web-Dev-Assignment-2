@@ -1,6 +1,5 @@
 let numRows = 0;
 let numCols = 0;
-let colorSelected; 
 
 //Add a row
 function addR() {
@@ -76,16 +75,16 @@ function removeC() {
 //    console.log("Clicked Remove Col");
 }
 //sets global var for selected color
-function selected(){
-    colorSelected = document.getElementById("selectedID").value;
-    console.log(colorSelected);
-}
 
 function getColor(){
     return document.getElementById("selectedID").value;
 }
 
 function fill(){
+    let cols = document.getElementsByTagName("td");
+    for (let col of cols){
+        col.style.background = getColor();
+    }
     console.log("Clicked Fill All");
 }
 
