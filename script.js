@@ -89,7 +89,10 @@ function fill(){
 }
 
 function clearAll(){
-    console.log("Clicked Clear All");
+    let cols = document.getElementsByTagName("td");
+    for (let col of cols){
+        col.style.background = "White";
+    }
 }
 
 function fillU(){
