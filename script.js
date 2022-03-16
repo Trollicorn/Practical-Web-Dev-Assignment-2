@@ -7,6 +7,7 @@ function addR() {
     if (numRows === 0){
         let row = document.createElement("tr");
         let col = document.createElement("td");
+        col.style.backgroundColor = "White";
         col.onclick = function(){
             this.style.backgroundColor = getColor();
         }
@@ -18,6 +19,7 @@ function addR() {
         let row = document.createElement("tr");
         for (let i = 0; i < numCols; ++i){
             col = document.createElement("td");
+            col.style.backgroundColor = "White";
             col.onclick = function(){
                 this.style.backgroundColor = getColor();
             }
@@ -37,6 +39,7 @@ function addC() {
         numCols++;
         for (let row of rows){
             col = document.createElement("td");
+            col.style.backgroundColor = "White";
             col.onclick = function(){
                 this.style.backgroundColor = getColor();
             }
@@ -83,7 +86,7 @@ function getColor(){
 function fill(){
     let cols = document.getElementsByTagName("td");
     for (let col of cols){
-        col.style.background = getColor();
+        col.style.backgroundColor = getColor();
     }
     console.log("Clicked Fill All");
 }
@@ -91,10 +94,17 @@ function fill(){
 function clearAll(){
     let cols = document.getElementsByTagName("td");
     for (let col of cols){
-        col.style.background = "White";
+        col.style.backgroundColor = "White";
+        console.log(col.style.backgroundColor);
     }
 }
 
 function fillU(){
+    let cols = document.getElementsByTagName("td");
+    for (let col of cols){
+        if (col.style.backgroundColor === "white"){
+            col.style.backgroundColor = getColor();
+        }
+    }
     console.log("Clicked Fill Uncolored");
 }
