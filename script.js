@@ -1,6 +1,5 @@
 let numRows = 0;
 let numCols = 0;
-let colorSelected; 
 
 //Add a row
 function addR() {
@@ -8,6 +7,10 @@ function addR() {
     if (numRows === 0){
         let row = document.createElement("tr");
         let col = document.createElement("td");
+        col.style.backgroundColor = "White";
+        col.onclick = function(){
+            this.style.backgroundColor = getColor();
+        }
         row.appendChild(col);
         grid.appendChild(row);
         numRows++;
@@ -15,7 +18,12 @@ function addR() {
     }else{
         let row = document.createElement("tr");
         for (let i = 0; i < numCols; ++i){
-            row.appendChild(document.createElement("td"));
+            col = document.createElement("td");
+            col.style.backgroundColor = "White";
+            col.onclick = function(){
+                this.style.backgroundColor = getColor();
+            }
+            row.appendChild(col);
         }
         grid.appendChild(row);
         numRows++;
@@ -30,7 +38,12 @@ function addC() {
         let rows = document.getElementsByTagName("tr");
         numCols++;
         for (let row of rows){
-            row.appendChild(document.createElement("td"));
+            col = document.createElement("td");
+            col.style.backgroundColor = "White";
+            col.onclick = function(){
+                this.style.backgroundColor = getColor();
+            }
+            row.appendChild(col);
         }
     }
 //    console.log("Clicked Add Col");
@@ -42,7 +55,6 @@ function removeR() {
         let grid = document.getElementById("grid");
         grid.removeChild(grid.lastChild);
         numRows--;
-        console.log(numRows + " rows");
         if (numRows === 0){
             numCols = 0;
         }
@@ -66,19 +78,33 @@ function removeC() {
 //    console.log("Clicked Remove Col");
 }
 //sets global var for selected color
-function selected(){
-    colorSelected = document.getElementById("selectedID").value;
-    console.log(colorSelected);
+
+function getColor(){
+    return document.getElementById("selectedID").value;
 }
 
 function fill(){
+    let cols = document.getElementsByTagName("td");
+    for (let col of cols){
+        col.style.backgroundColor = getColor();
+    }
     console.log("Clicked Fill All");
 }
 
 function clearAll(){
-    console.log("Clicked Clear All");
+    let cols = document.getElementsByTagName("td");
+    for (let col of cols){
+        col.style.backgroundColor = "White";
+        console.log(col.style.backgroundColor);
+    }
 }
 
 function fillU(){
+    let cols = document.getElementsByTagName("td");
+    for (let col of cols){
+        if (col.style.backgroundColor === "white"){
+            col.style.backgroundColor = getColor();
+        }
+    }
     console.log("Clicked Fill Uncolored");
 }
